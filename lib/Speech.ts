@@ -1,5 +1,3 @@
-import { fstat } from "fs";
-
 const textToSpeech = require('@google-cloud/text-to-speech').v1beta1;
 
 require('dotenv').config();
