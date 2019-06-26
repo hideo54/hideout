@@ -1,6 +1,6 @@
-const textToSpeech = require('@google-cloud/text-to-speech').v1beta1;
-
-require('dotenv').config();
+import { TextToSpeechClient } from '@google-cloud/text-to-speech';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export enum JPSpeaker {
     Woman = 'ja-JP-Wavenet-B',
@@ -12,7 +12,7 @@ export class Speech {
     private client;
 
     constructor() {
-        this.client = new textToSpeech.TextToSpeechClient();
+        this.client = new TextToSpeechClient();
     }
 
     async getJPVoice(text: string, speaker: JPSpeaker = JPSpeaker.Woman, rate: number = 1.1) {
