@@ -2,25 +2,25 @@ const textToSpeech = require('@google-cloud/text-to-speech').v1beta1;
 
 require('dotenv').config();
 
-export enum JPVoice {
+export enum JPSpeaker {
     Woman = 'ja-JP-Wavenet-B',
     Boy = 'ja-JP-Wavenet-C',
     Gentleman = 'ja-JP-Wavenet-D'
 }
 
-export class Speaker {
+export class Speech {
     private client;
 
     constructor() {
         this.client = new textToSpeech.TextToSpeechClient();
     }
 
-    async speakJP(text: string, voice: JPVoice, rate: number = 1.0) {
+    async getJPVoice(text: string, speaker: JPSpeaker = JPSpeaker.Woman, rate: number = 1.1) {
         const request = {
             input: { text },
             voice: {
                 languageCode: 'ja-JP',
-                name: voice
+                name: speaker
             },
             audioConfig: {
                 audioEncoding: 'MP3',
