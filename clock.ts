@@ -9,7 +9,18 @@ schedule.scheduleJob('*/10 * * * *', async date => {
     const speaker = new Speech.Speech();
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
     const fireDate = moment(date).tz('Asia/Tokyo');
-    const phrase = `時刻は${fireDate.hour()}時${fireDate.minute()}分です。`;
+    let phrase = `時刻は${fireDate.format('h')}時`;
+    switch (fireDate.minute()) {
+        case 0:
+            phrase += '';
+            break;
+        case 30:
+            phrase += '半';
+            break;
+        default:
+            phrase += `${fireDate.minute()}分`;
+    }
+    phrase += 'です。';
     const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Boy);
     gHome.pushAudio(voice);
 });
