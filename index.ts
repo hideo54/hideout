@@ -3,4 +3,5 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 require('./clock');
+require('./NHKradioNews');
 require('./earthquake-info');
