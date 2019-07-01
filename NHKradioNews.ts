@@ -37,7 +37,8 @@ const fetchLatestNews = async ()  => {
     };
 };
 
-schedule.scheduleJob('10 * * * *', async date => {
+schedule.scheduleJob('30 10 * * * *', async date => {
+    // Runs every **:10:30 (30s behind the clock to avoid audio conflict)
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
     const news = await fetchLatestNews();
     console.log(news.date.hour());
