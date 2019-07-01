@@ -11,7 +11,7 @@ export class GoogleHome {
         this.IPAddress = ip;
     }
 
-    pushAudio(audio) {
+    pushAudio(audio: Buffer) {
         const client = new GoogleCastClient();
         client.connect( this.IPAddress, () => {
             client.launch(DefaultMediaReceiver, (err, player) => {
@@ -32,6 +32,26 @@ export class GoogleHome {
                 };
                 player.load(media, { autoplay: true }, (err, status) => {
                     server.close();
+                    client.close();
+                });
+            });
+        });
+    }
+
+    pushAudioUrl(url: string) {
+        const client = new GoogleCastClient();
+        client.connect( this.IPAddress, () => {
+            client.launch(DefaultMediaReceiver, (err, player) => {
+                if (err) {
+                    console.error(err);
+                    client.close();
+                }
+                const media = {
+                    contentId: url,
+                    contentType: 'audio/mp3',
+                    streamType: 'BUFFERED'
+                };
+                player.load(media, { autoplay: true }, (err, status) => {
                     client.close();
                 });
             });
