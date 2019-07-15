@@ -21,6 +21,6 @@ schedule.scheduleJob('*/10 * * * *', async date => {
             phrase += `${fireDate.minute()}分`;
     }
     phrase += 'です。';
-    const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Boy);
+    const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Woman);
     gHome.pushAudio(voice);
 });
