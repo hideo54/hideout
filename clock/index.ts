@@ -5,7 +5,7 @@ import * as moment from 'moment-timezone';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-schedule.scheduleJob('*/10 * * * *', async date => {
+schedule.scheduleJob('*/5 * * * *', async date => {
     const speaker = new Speech.Speech();
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
     const fireDate = moment(date).tz('Asia/Tokyo');
