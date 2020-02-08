@@ -1,4 +1,4 @@
-import { GoogleHome } from './lib/GoogleHome';
+import { GoogleHome } from '../lib/GoogleHome';
 import * as schedule from 'node-schedule';
 import  axios from 'axios';
 import * as dotenv from 'dotenv';

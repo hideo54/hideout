@@ -1,5 +1,5 @@
-import * as Speech from './lib/Speech';
-import { GoogleHome } from './lib/GoogleHome';
+import * as Speech from '../lib/Speech';
+import { GoogleHome } from '../lib/GoogleHome';
 import * as schedule from 'node-schedule';
 import * as moment from 'moment-timezone';
 import * as dotenv from 'dotenv';
