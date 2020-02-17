@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "tsc *.ts",
+    "build": "tsc *.ts **/*.ts",
     "develop": "ts-node index.ts",
     "test": "jest"
   },
