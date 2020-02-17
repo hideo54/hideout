@@ -5,3 +5,4 @@ dotenv.config();
 require('./clock');
 require('./NHKradioNews');
 require('./earthquake-info');
+require('./comfortability');
