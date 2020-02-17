@@ -1,7 +1,9 @@
+// @ts-nocheck
+// because there's no type definition of castv2-client.
 import * as http from 'http';
 import { AddressInfo } from 'net';
 import { Client as GoogleCastClient, DefaultMediaReceiver } from 'castv2-client';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 dotenv.config();
 
 export class GoogleHome {
