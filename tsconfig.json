@@ -5,12 +5,14 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "esModuleInterop": true,
-        "sourceMap": true
+        "sourceMap": false
     },
     "include": [
         "**/*"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/*.test.ts",
+        "lib/Hue.ts"
     ]
 }

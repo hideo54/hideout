@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "tsc *.ts **/*.ts",
+    "build": "tsc -p tsconfig.json",
     "develop": "ts-node index.ts",
     "test": "jest"
   },
@@ -18,7 +18,9 @@
   "dependencies": {
     "@google-cloud/text-to-speech": "^1.4.1",
     "@types/axios": "^0.14.0",
+    "@types/eventsource": "^1.1.2",
     "@types/google-cloud__text-to-speech": "^0.5.0",
+    "@types/html-to-text": "^1.4.31",
     "@types/jest": "^25.1.2",
     "@types/moment-timezone": "^0.5.12",
     "@types/node": "^12.12.26",
