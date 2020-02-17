@@ -40,8 +40,6 @@ const fetchLatestNews = async ()  => {
 export const job = async (date: Date) => {
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
     const news = await fetchLatestNews();
-    console.log(news.date.hour());
-    console.log(moment(date).tz('Asia/Tokyo').hour());
     if (news.date.hour() === moment(date).hour()) {
         gHome.pushAudioUrl(news.url);
     }

@@ -6,7 +6,6 @@ import * as htmlToText from 'html-to-text';
 const streamUrl = `https://unnerv.jp/api/v1/streaming/hashtag?tag=${encodeURI('地震')}`;
 const es = new EventSource(streamUrl);
 es.addEventListener('update', async event => {
-    console.log(event);
     const data = JSON.parse(event.data);
     const content = htmlToText.fromString(data.content, {
         ignoreHref: true
