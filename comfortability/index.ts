@@ -1,4 +1,4 @@
-import { getAirCondition, AirCondition } from '../lib/Air';
+import { getAirCondition } from '../lib/Air';
 import { Speech } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
 import schedule from 'node-schedule';
@@ -11,12 +11,13 @@ const generatePhrase = async () => {
         i2cAddress: 0x76,
     };
     const bme280 = new BME280(options);
+    await bme280.init();
     const data = await bme280.readSensorData();
     const { temperature, humidity, THI, comfortability } = getAirCondition(data.temperature_C, data.humidity);
     if (60 < THI && THI < 75) {
         return null;
     }
-    return `現在、気温${temperature}度、湿度${humidity}と、部屋が${comfortability}状態です。`;
+    return `現在、気温${temperature}度、湿度${humidity}パーセントと、部屋が${comfortability}状態です。`;
 };
 
 const job = async (date: Date) => {
