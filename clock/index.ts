@@ -1,4 +1,4 @@
-import { Speech } from '../lib/Speech';
+import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
 import schedule from 'node-schedule';
 import moment from 'moment-timezone';
@@ -26,7 +26,7 @@ const job = async (date: Date) => {
     const phrase = generatePhrase(date);
     const speaker = new Speech();
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
-    const voice = await speaker.getJPVoice(phrase, 'Woman');
+    const voice = await speaker.getJPVoice(phrase, JPSpeaker.Woman);
     gHome.pushAudio(voice);
 };
 
