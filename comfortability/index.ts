@@ -1,5 +1,5 @@
 import { getAirCondition } from '../lib/Air';
-import { Speech } from '../lib/Speech';
+import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
 import schedule from 'node-schedule';
 // @ts-ignore
@@ -13,7 +13,10 @@ const generatePhrase = async () => {
     const bme280 = new BME280(options);
     await bme280.init();
     const data = await bme280.readSensorData();
-    const { temperature, humidity, THI, comfortability } = getAirCondition(data.temperature_C, data.humidity);
+    const condition = getAirCondition(data.temperature_C, data.humidity);
+    const temperature = condition.temperature.toFixed(1);
+    const humidity = condition.humidity.toFixed(1);
+    const { comfortability, THI } = condition;
     if (60 < THI && THI < 75) {
         return null;
     }
@@ -25,7 +28,7 @@ const job = async (date: Date) => {
     if (phrase) {
         const speaker = new Speech();
         const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
-        const voice = await speaker.getJPVoice(phrase, 'Woman');
+        const voice = await speaker.getJPVoice(phrase, JPSpeaker.Woman);
         gHome.pushAudio(voice);
     }
 };
