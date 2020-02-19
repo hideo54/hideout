@@ -1,4 +1,3 @@
-import { getAirCondition } from '../lib/Air';
 import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
 import schedule from 'node-schedule';
@@ -13,14 +12,48 @@ const generatePhrase = async () => {
     const bme280 = new BME280(options);
     await bme280.init();
     const data = await bme280.readSensorData();
-    const condition = getAirCondition(data.temperature_C, data.humidity);
-    const temperature = condition.temperature.toFixed(1);
-    const humidity = condition.humidity.toFixed(1);
-    const { comfortability, THI } = condition;
-    if (60 < THI && THI < 75) {
+
+    const temperature = data.temperature_C;
+    const humidity = data.humidity;
+    // const pressure = data.pressure_hPa;
+
+    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセント。`;
+    let advice = '';
+
+    const now = new Date();
+    if ([ 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
+        if (temperature < 25) {
+            advice += '室温を上げてください。';
+        }
+        if (temperature > 28) {
+            advice += '室温を下げてください。';
+        }
+        if (humidity < 55) {
+            advice += '湿度を上げてください。';
+        }
+        if (humidity > 65) {
+            advice += '湿度を下げてください。';
+        }
+    }
+    if ([ 11, 12, 1, 2, 3].includes(now.getMonth() + 1)) { // Winter
+        if (temperature < 18) {
+            advice += '室温を上げてください。';
+        }
+        if (temperature > 22) {
+            advice += '室温を下げてください。';
+        }
+        if (humidity < 45) {
+            advice += '湿度を上げてください。';
+        }
+        if (humidity > 60) {
+            advice += '湿度を下げてください。';
+        }
+    }
+    if (advice) {
+        return report + advice;
+    } else {
         return null;
     }
-    return `現在、気温${temperature}度、湿度${humidity}パーセントと、部屋が${comfortability}状態です。`;
 };
 
 const job = async (date: Date) => {
