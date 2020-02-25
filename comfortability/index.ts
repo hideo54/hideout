@@ -17,36 +17,36 @@ const generatePhrase = async () => {
     const humidity = data.humidity;
     // const pressure = data.pressure_hPa;
 
-    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセント。`;
+    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセントです。`;
     let advice = '';
 
     const now = new Date();
     if ([ 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
         if (temperature < 25) {
-            advice += '室温を上げてください。';
+            advice += '部屋の温度を上げましょう。';
         }
         if (temperature > 28) {
-            advice += '室温を下げてください。';
+            advice += '部屋の温度を下げましょう。';
         }
         if (humidity < 55) {
-            advice += '湿度を上げてください。';
+            advice += '部屋の湿度を上げましょう。';
         }
         if (humidity > 65) {
-            advice += '湿度を下げてください。';
+            advice += '部屋の湿度を下げましょう。';
         }
     }
     if ([ 11, 12, 1, 2, 3].includes(now.getMonth() + 1)) { // Winter
         if (temperature < 18) {
-            advice += '室温を上げてください。';
+            advice += '部屋の温度を上げましょう。';
         }
         if (temperature > 22) {
-            advice += '室温を下げてください。';
+            advice += '部屋の温度を下げましょう。';
         }
         if (humidity < 45) {
-            advice += '湿度を上げてください。';
+            advice += '部屋の湿度を上げましょう。';
         }
         if (humidity > 60) {
-            advice += '湿度を下げてください。';
+            advice += '部屋の湿度を下げましょう。';
         }
     }
     if (advice) {
