@@ -1,8 +1,13 @@
-import fs from 'fs';
+import schedule from 'node-schedule';
 import dotenv from 'dotenv';
 dotenv.config();
 
-require('./clock');
-require('./NHKradioNews');
+import clockJob from './clock';
+import comfortabilityJob from './comfortability';
+import nhkRadioNewsJob from './NHKradioNews';
+
 require('./earthquake-info');
-require('./comfortability');
+
+schedule.scheduleJob('   */ 5 * * * *', clockJob);
+schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
+schedule.scheduleJob('30   10 * * * *', nhkRadioNewsJob);

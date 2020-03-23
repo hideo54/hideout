@@ -37,13 +37,10 @@ const fetchLatestNews = async ()  => {
     };
 };
 
-export const job = async (date: Date) => {
+export default async (date: Date) => {
     const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
     const news = await fetchLatestNews();
     if (news.date.hour() === moment(date).hour()) {
         gHome.pushAudioUrl(news.url);
     }
 };
-
-// Runs every **:10:30 (30s behind the clock to avoid audio conflict)
-schedule.scheduleJob('30 10 * * * *', job);

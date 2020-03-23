@@ -56,7 +56,7 @@ const generatePhrase = async () => {
     }
 };
 
-const job = async (date: Date) => {
+export default async (date: Date) => {
     const phrase = await generatePhrase();
     if (phrase) {
         const speaker = new Speech();
@@ -65,5 +65,3 @@ const job = async (date: Date) => {
         gHome.pushAudio(voice);
     }
 };
-
-schedule.scheduleJob('10 */10 * * * *', job);
