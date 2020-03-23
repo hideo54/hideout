@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -P tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "develop": "ts-node index.ts -P tsconfig.json",
     "test": "jest"
   },
