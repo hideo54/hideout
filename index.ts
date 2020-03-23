@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as dotenv from 'dotenv';
+import fs from 'fs';
+import dotenv from 'dotenv';
 dotenv.config();
 
 require('./clock');

@@ -1,8 +1,8 @@
 import { GoogleHome } from '../lib/GoogleHome';
-import * as schedule from 'node-schedule';
-import  axios from 'axios';
-import * as dotenv from 'dotenv';
-import moment = require('moment-timezone');
+import schedule from 'node-schedule';
+import axios from 'axios';
+import dotenv from 'dotenv';
+import moment from 'moment-timezone';
 dotenv.config();
 
 const fetchLatestNews = async ()  => {
