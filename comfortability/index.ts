@@ -1,6 +1,5 @@
 import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
-import schedule from 'node-schedule';
 // @ts-ignore
 import BME280 from 'bme280-sensor';
 

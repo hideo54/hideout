@@ -1,6 +1,5 @@
 import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
-import schedule from 'node-schedule';
 import moment from 'moment-timezone';
 import dotenv from 'dotenv';
 dotenv.config();
