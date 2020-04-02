@@ -28,7 +28,9 @@ const statuses = {
     },
 };
 
-export const setStatus = async (webClient: WebClient, status: keyof typeof statuses) => {
+export type DefinedSlackStatus = keyof typeof statuses;
+
+export const setStatus = async (webClient: WebClient, status: DefinedSlackStatus) => {
     const { isAway, status_emoji, status_text } = statuses[status];
     const currentProfile = (await webClient.users.profile.get()).profile;
     // @ts-ignore
