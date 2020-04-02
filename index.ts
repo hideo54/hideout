@@ -6,11 +6,11 @@ import clockJob from './clock';
 import comfortabilityJob from './comfortability';
 import nhkRadioNewsJob from './NHKradioNews';
 
-require('./earthquake-info');
-
-schedule.scheduleJob('   */ 5 * * * *', clockJob);
+schedule.scheduleJob('    */5 * * * *', clockJob);
 schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
-schedule.scheduleJob('30   10 * * * *', nhkRadioNewsJob);
+schedule.scheduleJob('30 */10 * * * *', nhkRadioNewsJob);
+
+require('./earthquake-info');
 
 import { v3 as hueAPIv3 } from 'node-hue-api';
 import { dimLightsBy5 } from './HueLamps';
