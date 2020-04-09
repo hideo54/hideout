@@ -30,7 +30,7 @@ const fetchLatestNews = async ()  => {
     ////     }
     //// }
     const filename = latestNews.soundlist.sound_normal.filename;
-    const startDateRFC2822String = `${latestNews.startDate.slice(0, -3)}00` // Cut colon in "+09:00"
+    const startDateRFC2822String = `${latestNews.startdate.slice(0, -3)}00` // Cut colon in "+09:00"
     return {
         date: moment(startDateRFC2822String).tz('Asia/Tokyo'),
         url: `https://www.nhk.or.jp/r-news/ondemand/mp3/${filename}.mp3`,
