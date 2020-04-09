@@ -7,6 +7,7 @@ const generatePhrase = async () => {
     const options = {
         i2cBusNo: 1,
         i2cAddress: 0x76,
+        outputsInfo: false,
     };
     const bme280 = new BME280(options);
     await bme280.init();
