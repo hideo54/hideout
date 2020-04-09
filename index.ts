@@ -8,7 +8,7 @@ import nhkRadioNewsJob from './NHKradioNews';
 
 schedule.scheduleJob('    */5 * * * *', clockJob);
 schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
-schedule.scheduleJob('30 */10 * * * *', nhkRadioNewsJob);
+schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
 
 require('./earthquake-info');
 
