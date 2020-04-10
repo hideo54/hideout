@@ -7,7 +7,11 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "esModuleInterop": true,
-        "sourceMap": false
+        "sourceMap": false,
+        "baseUrl": "./",
+        "paths": {
+            "*": [ "types/*" ]
+        }
     },
     "include": [
         "**/*"
