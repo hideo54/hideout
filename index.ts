@@ -8,7 +8,7 @@ import nhkRadioNewsJob from './NHKradioNews';
 
 schedule.scheduleJob('   */10 * * * *', clockJob);
 schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
-schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
+schedule.scheduleJob('40    0 * * * *', nhkRadioNewsJob);
 
 require('./earthquake-info');
 
@@ -16,7 +16,7 @@ import MHZ19 from 'mh-z19b';
 import notifyCO2Concentration from './CO2';
 
 const mhz19 = new MHZ19();
-schedule.scheduleJob('20 */10 * * * *', async () => {
+schedule.scheduleJob('30 */10 * * * *', async () => {
     await notifyCO2Concentration(mhz19);
 });
 
