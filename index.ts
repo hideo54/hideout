@@ -6,7 +6,7 @@ import clockJob from './clock';
 import comfortabilityJob from './comfortability';
 import nhkRadioNewsJob from './NHKradioNews';
 
-schedule.scheduleJob('    */5 * * * *', clockJob);
+schedule.scheduleJob('   */10 * * * *', clockJob);
 schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
 schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
 
