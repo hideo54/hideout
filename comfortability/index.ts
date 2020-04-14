@@ -15,9 +15,9 @@ const generatePhrase = async () => {
 
     const temperature = data.temperature_C;
     const humidity = data.humidity;
-    const pressure = data.pressure_hPa;
+    // const pressure = data.pressure_hPa;
 
-    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセント、気圧${pressure.toFixed(0)}ヘクトパスカルです。`;
+    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセントです。`;
     let advice = '';
 
     const now = new Date();
