@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "develop": "ts-node index.ts -P tsconfig.json",
+    "deploy": "git pull origin master && npm i && npm run build && pm2 restart hideout",
     "test": "jest"
   },
   "author": "hideo54",
