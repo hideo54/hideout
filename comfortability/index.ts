@@ -50,9 +50,8 @@ const generatePhrase = async () => {
     }
     if (advice) {
         return report + advice;
-    } else {
-        return null;
     }
+    return;
 };
 
 export default async (date: Date) => {
