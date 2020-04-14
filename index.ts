@@ -15,7 +15,7 @@ require('./earthquake-info');
 import { v3 as hueAPIv3 } from 'node-hue-api';
 const hueAPI = hueAPIv3.api;
 import { dimLightsBy5 } from './HueLamps';
-const hueAPI = hueAPIv3.api;
+
 (async () => {
     const address = process.env.HUE_BRIDGE_ADDRESS!;
     const username = process.env.HUE_BRIDGE_USERNAME!;
