@@ -28,6 +28,7 @@ const allLightIDs = [...colorfulLightIDs, ...simpleLightIDs];
 
 export const dimLightsBy5 = async (bridge: Bridge) => {
     const currentState: SimpleLightState = await bridge.lights.getLightState(allLightIDs[0]);
+    if (!currentState.on) return;
     const newBri = Math.max(currentState.bri - 5, 0);
     const dimmerState = newBri === 0
         ? new LightState().off()
