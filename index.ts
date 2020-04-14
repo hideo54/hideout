@@ -23,13 +23,16 @@ schedule.scheduleJob('20 */10 * * * *', async () => {
 
 import { v3 as hueAPIv3 } from 'node-hue-api';
 const hueAPI = hueAPIv3.api;
-import { dimLightsBy5 } from './HueLamps';
+import { darkenLightsBy5, brightenLightsBy5 } from './HueLamps';
 
 (async () => {
     const address = process.env.HUE_BRIDGE_ADDRESS!;
     const username = process.env.HUE_BRIDGE_USERNAME!;
     const bridge = await hueAPI.createLocal(address).connect(username);
     schedule.scheduleJob('* 0-6 * * *', async () => {
-        await dimLightsBy5(bridge);
+        await darkenLightsBy5(bridge);
+    });
+    schedule.scheduleJob('* 9-12 * * *', async () => {
+        await brightenLightsBy5(bridge);
     });
 })();
