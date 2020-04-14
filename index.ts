@@ -13,6 +13,7 @@ schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
 require('./earthquake-info');
 
 import { v3 as hueAPIv3 } from 'node-hue-api';
+const hueAPI = hueAPIv3.api;
 import { dimLightsBy5 } from './HueLamps';
 const hueAPI = hueAPIv3.api;
 (async () => {

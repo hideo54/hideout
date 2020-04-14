@@ -1,6 +1,5 @@
 import { v3 as hueAPIv3 } from 'node-hue-api';
-import Api from 'node-hue-api/lib/api/Api';
-const hueAPI = hueAPIv3.api;
+import Bridge from 'node-hue-api/lib/api/Api';
 const LightState = hueAPIv3.lightStates.LightState;
 
 interface SimpleLightState {
@@ -27,7 +26,7 @@ const allLightIDs = [...colorfulLightIDs, ...simpleLightIDs];
 // This program assumes that all lamps are regarded as an integrated light system and are controlled by hideout system.
 // So every lamps has a same brightness.
 
-export const dimLightsBy5 = async (bridge: Api) => {
+export const dimLightsBy5 = async (bridge: Bridge) => {
     const currentState: SimpleLightState = await bridge.lights.getLightState(allLightIDs[0]);
     const newBri = Math.max(currentState.bri - 5, 0);
     const dimmerState = newBri === 0
