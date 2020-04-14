@@ -1,9 +1,17 @@
 import dnsjack from 'dnsjack';
+import records from './records.json';
 
 const jack = dnsjack.createServer();
 
-jack.route('*.hideout', (data, callback) => {
-    callback(null, '192.168.0.10');
-});
+interface Record {
+    name: string;
+    address: string;
+}
+
+for (const record of records as Record[]) {
+    jack.route(record.name, (data, callback) => {
+        callback(null, record.address);
+    });
+}
 
 jack.listen();
