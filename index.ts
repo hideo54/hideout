@@ -12,6 +12,15 @@ schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
 
 require('./earthquake-info');
 
+// @ts-ignore
+import MHZ19 from 'mh-z19b';
+import notifyCO2Concentration from './CO2';
+
+const mhz19 = new MHZ19();
+schedule.scheduleJob('20 */10 * * * *', async () => {
+    await notifyCO2Concentration(mhz19);
+});
+
 import { v3 as hueAPIv3 } from 'node-hue-api';
 const hueAPI = hueAPIv3.api;
 import { dimLightsBy5 } from './HueLamps';
