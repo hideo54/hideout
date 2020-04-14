@@ -12,7 +12,6 @@ schedule.scheduleJob('30    0 * * * *', nhkRadioNewsJob);
 
 require('./earthquake-info');
 
-// @ts-ignore
 import MHZ19 from 'mh-z19b';
 import notifyCO2Concentration from './CO2';
 
