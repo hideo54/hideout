@@ -1,6 +1,5 @@
 import { Speech, JPSpeaker } from '../lib/Speech';
 import { GoogleHome } from '../lib/GoogleHome';
-// @ts-ignore
 import BME280 from 'bme280-sensor';
 
 const generatePhrase = async () => {
