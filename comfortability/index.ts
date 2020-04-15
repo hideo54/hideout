@@ -20,7 +20,7 @@ const generatePhrase = async () => {
     let advice = '';
 
     const now = new Date();
-    if ([ 4, 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
+    if ([ 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
         if (temperature < 25) {
             advice += '部屋の温度を上げましょう。';
         }
@@ -34,7 +34,7 @@ const generatePhrase = async () => {
             advice += '部屋の湿度を下げましょう。';
         }
     }
-    if ([ 10, 11, 12, 1, 2, 3].includes(now.getMonth() + 1)) { // Winter
+    if ([ 10, 11, 12, 1, 2, 3, 4 ].includes(now.getMonth() + 1)) { // Winter
         if (temperature < 18) {
             advice += '部屋の温度を上げましょう。';
         }
