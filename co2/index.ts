@@ -1,14 +1,11 @@
 import MHZ19 from 'mh-z19b';
-import * as Speech  from '../lib/speech';
-import { GoogleHome } from '../lib/google-home';
 
-export default async (sensor: MHZ19) => {
-    const value = await sensor.readCO2();
+const job: Job = async (date: Date, utils: Utils) => {
+    const value = await utils.mhz19.readCO2();
     if (value < 1000) return;
     let phrase = `現在の二酸化炭素濃度は ${value} ppmです。今すぐ換気してください。`;
-
-    const speaker = new Speech.Speech();
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
-    const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Woman);
-    gHome.pushAudio(voice);
+    const voice = await utils.speaker.getJPVoice(phrase, 'boy');
+    utils.gHome.pushAudio(voice);
 };
+
+export default job;

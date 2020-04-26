@@ -1,16 +1,7 @@
-import { Speech, JPSpeaker } from '../lib/speech';
-import { GoogleHome } from '../lib/google-home';
 import BME280 from 'bme280-sensor';
 
-const generatePhrase = async () => {
-    const options = {
-        i2cBusNo: 1,
-        i2cAddress: 0x76,
-        outputsInfo: false,
-    };
-    const bme280 = new BME280(options);
-    await bme280.init();
-    const data = await bme280.readSensorData();
+const generatePhrase = async (sensor: BME280) => {
+    const data = await sensor.readSensorData();
 
     const temperature = data.temperature_C;
     const humidity = data.humidity;
@@ -54,12 +45,12 @@ const generatePhrase = async () => {
     return;
 };
 
-export default async (date: Date) => {
-    const phrase = await generatePhrase();
+const job: Job = async (date: Date, utils: Utils) => {
+    const phrase = await generatePhrase(utils.bme280);
     if (phrase) {
-        const speaker = new Speech();
-        const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
-        const voice = await speaker.getJPVoice(phrase, JPSpeaker.Woman);
-        gHome.pushAudio(voice);
+        const voice = await utils.speaker.getJPVoice(phrase, 'boy');
+        utils.gHome.pushAudio(voice);
     }
 };
+
+export default job;

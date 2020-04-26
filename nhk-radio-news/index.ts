@@ -1,8 +1,5 @@
-import { GoogleHome } from '../lib/google-home';
 import axios from 'axios';
-import dotenv from 'dotenv';
 import moment from 'moment-timezone';
-dotenv.config();
 
 const fetchLatestNews = async ()  => {
     const apiUrl = 'https://api.nhk.or.jp/r-news/v1/newslist.js';
@@ -37,10 +34,11 @@ const fetchLatestNews = async ()  => {
     };
 };
 
-export default async (date: Date) => {
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
+const job: Job = async (date: Date, utils: Utils) => {
     const news = await fetchLatestNews();
     if (news.date.hour() === moment(date).hour()) {
-        gHome.pushAudioUrl(news.url);
+        utils.gHome.pushAudioUrl(news.url);
     }
 };
+
+export default job;

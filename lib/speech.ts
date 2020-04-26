@@ -1,33 +1,33 @@
 import TextToSpeech from '@google-cloud/text-to-speech';
-import * as dotenv from 'dotenv';
-dotenv.config();
 
-export enum JPSpeaker {
-    Woman = 'ja-JP-Wavenet-B',
-    Boy = 'ja-JP-Wavenet-C',
-    Gentleman = 'ja-JP-Wavenet-D'
-}
+const jpSpeakerName = {
+    woman: 'ja-JP-Wavenet-B',
+    boy: 'ja-JP-Wavenet-C',
+    gentleman: 'ja-JP-Wavenet-D',
+} as const;
+type JPSpeaker = keyof typeof jpSpeakerName;
 
 export class Speech {
     // @ts-ignore
     private client;
+    static speakerName = jpSpeakerName;
 
     constructor() {
         this.client = new TextToSpeech.TextToSpeechClient();
     }
 
-    async getJPVoice(text: string, speaker: JPSpeaker = JPSpeaker.Woman, rate: number = 1.1) {
+    async getJPVoice(text: string, speaker: JPSpeaker = 'woman', rate: number = 1.1) {
         const request = {
             input: { text },
             voice: {
                 languageCode: 'ja-JP',
-                name: speaker
+                name: jpSpeakerName[speaker],
             },
             audioConfig: {
                 audioEncoding: 'MP3',
                 speakingRate: rate,
-                volumeGainDb: 0.0
-            }
+                volumeGainDb: 0.0,
+            },
         };
         const [ response ] = await this.client.synthesizeSpeech(request);
         return response.audioContent;

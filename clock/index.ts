@@ -1,8 +1,4 @@
-import { Speech, JPSpeaker } from '../lib/speech';
-import { GoogleHome } from '../lib/google-home';
 import moment from 'moment-timezone';
-import dotenv from 'dotenv';
-dotenv.config();
 
 export const generatePhrase = (date: Date) => {
     const fireDate = moment(date).tz('Asia/Tokyo');
@@ -21,10 +17,10 @@ export const generatePhrase = (date: Date) => {
     return phrase;
 };
 
-export default async (date: Date) => {
+const job: Job = async (date: Date, utils: Utils) => {
     const phrase = generatePhrase(date);
-    const speaker = new Speech();
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
-    const voice = await speaker.getJPVoice(phrase, JPSpeaker.Woman);
-    gHome.pushAudio(voice);
+    const voice = await utils.speaker.getJPVoice(phrase);
+    utils.gHome.pushAudio(voice);
 };
+
+export default job;
