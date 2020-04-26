@@ -39,9 +39,9 @@ es.addEventListener('update', async event => {
         phrase = phrase.slice(0, -1); // to remove 。 at the end
         phrase += 'です。';
     }
-    
+
     const speaker = new Speech.Speech();
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
+    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
     const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Gentleman);
     gHome.pushAudio(voice);
 });

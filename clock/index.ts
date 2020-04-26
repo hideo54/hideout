@@ -24,7 +24,7 @@ export const generatePhrase = (date: Date) => {
 export default async (date: Date) => {
     const phrase = generatePhrase(date);
     const speaker = new Speech();
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
+    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
     const voice = await speaker.getJPVoice(phrase, JPSpeaker.Woman);
     gHome.pushAudio(voice);
 };

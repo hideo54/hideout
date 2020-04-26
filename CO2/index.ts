@@ -8,7 +8,7 @@ export default async (sensor: MHZ19) => {
     let phrase = `現在の二酸化炭素濃度は ${value} ppmです。今すぐ換気してください。`;
 
     const speaker = new Speech.Speech();
-    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS);
+    const gHome = new GoogleHome(process.env.GOOGLE_HOME_ADDRESS!);
     const voice = await speaker.getJPVoice(phrase, Speech.JPSpeaker.Woman);
     gHome.pushAudio(voice);
 };

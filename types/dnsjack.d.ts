@@ -8,7 +8,7 @@ declare module 'dnsjack' {
         ttl: number;
     }
 
-    type Callback = (err: EventName, to: string | To) => void;
+    type Callback = (err: string | Symbol | null, to: string | To) => void;
 
     interface Data {
         domain: string;
