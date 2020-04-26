@@ -1,4 +1,4 @@
-import { GoogleHome } from '../lib/GoogleHome';
+import { GoogleHome } from '../lib/google-home';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import moment from 'moment-timezone';

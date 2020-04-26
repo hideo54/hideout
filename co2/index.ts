@@ -1,6 +1,6 @@
 import MHZ19 from 'mh-z19b';
-import * as Speech  from '../lib/Speech';
-import { GoogleHome } from '../lib/GoogleHome';
+import * as Speech  from '../lib/speech';
+import { GoogleHome } from '../lib/google-home';
 
 export default async (sensor: MHZ19) => {
     const value = await sensor.readCO2();

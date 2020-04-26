@@ -3,7 +3,7 @@
 node_modules/
 Voices/
 key.json
-DNS/records.json
+dns/records.json
 .env
 
 .DS_Store

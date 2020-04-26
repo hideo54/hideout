@@ -1,5 +1,5 @@
-import { GoogleHome } from '../lib/GoogleHome';
-import * as Speech from '../lib/Speech';
+import { GoogleHome } from '../lib/google-home';
+import * as Speech from '../lib/speech';
 import EventSource from 'eventsource';
 import htmlToText from 'html-to-text';
 

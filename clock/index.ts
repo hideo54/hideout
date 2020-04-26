@@ -1,5 +1,5 @@
-import { Speech, JPSpeaker } from '../lib/Speech';
-import { GoogleHome } from '../lib/GoogleHome';
+import { Speech, JPSpeaker } from '../lib/speech';
+import { GoogleHome } from '../lib/google-home';
 import moment from 'moment-timezone';
 import dotenv from 'dotenv';
 dotenv.config();

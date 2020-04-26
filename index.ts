@@ -4,7 +4,7 @@ dotenv.config();
 
 import clockJob from './clock';
 import comfortabilityJob from './comfortability';
-import nhkRadioNewsJob from './NHKradioNews';
+import nhkRadioNewsJob from './nhk-radio-news';
 
 schedule.scheduleJob('   */10 * * * *', clockJob);
 schedule.scheduleJob('10 */10 * * * *', comfortabilityJob);
@@ -13,7 +13,7 @@ schedule.scheduleJob('40    0 * * * *', nhkRadioNewsJob);
 require('./earthquake-info');
 
 import MHZ19 from 'mh-z19b';
-import notifyCO2Concentration from './CO2';
+import notifyCO2Concentration from './co2';
 
 const mhz19 = new MHZ19();
 schedule.scheduleJob('30 */10 * * * *', async () => {
@@ -22,7 +22,7 @@ schedule.scheduleJob('30 */10 * * * *', async () => {
 
 import { v3 as hueAPIv3 } from 'node-hue-api';
 const hueAPI = hueAPIv3.api;
-import { darkenLightsBy5, brightenLightsBy5 } from './HueLamps';
+import { darkenLightsBy5, brightenLightsBy5 } from './lib/hue-lamps';
 
 (async () => {
     const address = process.env.HUE_BRIDGE_ADDRESS!;
