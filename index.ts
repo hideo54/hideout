@@ -30,15 +30,15 @@ const init = async () => {
     return utils;
 };
 
+import earthquakeInfo from './earthquake-info';
 import clockJob from './clock';
-import notifyCO2Concentration from './co2';
 import comfortabilityJob from './comfortability';
+import notifyCO2Concentration from './co2';
 import nhkRadioNewsJob from './nhk-radio-news';
 import { darkenLightsBy5, brightenLightsBy5 } from './lib/hue-lamps';
 
-require('./earthquake-info');
-
 init().then(utils => {
+    earthquakeInfo(utils);
     schedule.scheduleJob(' 0 */10 * * * *', async date => {
         await clockJob(date, utils);
     });
