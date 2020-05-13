@@ -1,6 +1,7 @@
 import EventSource from 'eventsource';
 import htmlToText from 'html-to-text';
 import earthquakeHandler from './earthquake';
+import breakingHandler from './breaking';
 
 class ReadMastodonTootsStream {
     streamUrl: string;
@@ -14,18 +15,24 @@ class ReadMastodonTootsStream {
 }
 
 const job = async (utils: Utils) => {
-    const handlers: {
-        url: string,
+    const watchers: {
+        hashtag: string,
         handler: (text: string) => string | null,
         speaker: JPSpeaker,
     }[] = [
         {
-            url: `https://unnerv.jp/api/v1/streaming/hashtag?tag=${encodeURI('地震')}`,
+            hashtag: '地震',
             handler: earthquakeHandler,
             speaker: 'gentleman',
         },
+        {
+            hashtag: 'nhkニュース速報',
+            handler: breakingHandler,
+            speaker: 'gentleman',
+        },
     ];
-    for (const {url, handler, speaker} of handlers) {
+    for (const {hashtag, handler, speaker} of watchers) {
+        const url = `https://unnerv.jp/api/v1/streaming/hashtag?tag=${encodeURI(hashtag)}`;
         new ReadMastodonTootsStream(url, async (event: any) => {
             const data = JSON.parse(event.data);
             const content = htmlToText.fromString(data.content, {

@@ -39,7 +39,7 @@ export default ((text: string) => {
             phrases.push(`震度${scale}が、${areas}、`);
         }
         phrases.push('です。');
-        return phrases.join();
+        return phrases.join('');
     } else if (lines[0].startsWith('【地震情報')) {
         // Pattern 1
         const phrase = lines[1].replace('M', 'マグニチュード');
