@@ -2,6 +2,7 @@ import EventSource from 'eventsource';
 import htmlToText from 'html-to-text';
 import earthquakeHandler from './earthquake';
 import breakingHandler from './breaking';
+import eewHandler from './eew';
 
 class ReadMastodonTootsStream {
     streamUrl: string;
@@ -28,6 +29,11 @@ const job = async (utils: Utils) => {
         {
             hashtag: 'nhkニュース速報',
             handler: breakingHandler,
+            speaker: 'gentleman',
+        },
+        {
+            hashtag: '緊急', // 大抵緊急地震速報
+            handler: eewHandler,
             speaker: 'gentleman',
         },
     ];
