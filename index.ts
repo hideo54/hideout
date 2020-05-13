@@ -2,7 +2,7 @@ import schedule from 'node-schedule';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { Speech } from './lib/speech';
+import Speech from './lib/speech';
 import { GoogleHome } from './lib/google-home';
 import { WebClient as SlackWebClient } from '@slack/web-api';
 import BME280 from 'bme280-sensor';

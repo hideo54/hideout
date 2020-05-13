@@ -1,13 +1,12 @@
 import TextToSpeech from '@google-cloud/text-to-speech';
 
-const jpSpeakerName = {
+const jpSpeakerName: {[key in JPSpeaker]: string} = {
     woman: 'ja-JP-Wavenet-B',
     boy: 'ja-JP-Wavenet-C',
     gentleman: 'ja-JP-Wavenet-D',
-} as const;
-type JPSpeaker = keyof typeof jpSpeakerName;
+};
 
-export class Speech {
+export default class Speech {
     // @ts-ignore
     private client;
     static speakerName = jpSpeakerName;

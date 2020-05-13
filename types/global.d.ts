@@ -1,4 +1,4 @@
-import { Speech } from '../lib/speech';
+import Speech from '../lib/speech';
 import { GoogleHome } from '../lib/google-home';
 import BME280 from 'bme280-sensor';
 import MHZ19 from 'mh-z19b';
@@ -16,4 +16,5 @@ declare global {
     }
 
     type Job = (date: Date, utils: Utils) => void;
+    type JPSpeaker = 'woman' | 'boy' | 'gentleman';
 }
