@@ -39,7 +39,7 @@ import { darkenLightsBy5, brightenLightsBy5 } from './lib/hue-lamps';
 
 init().then(utils => {
     nerv(utils);
-    schedule.scheduleJob(' 0 */10 * * * *', async date => {
+    schedule.scheduleJob( '0 */10 * * * *', async date => {
         await clockJob(date, utils);
     });
     schedule.scheduleJob('10 */10 * * * *', async date => {
