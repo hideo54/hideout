@@ -15,6 +15,6 @@ declare global {
         hueBridge: HueAPI,
     }
 
-    type Job = (date: Date, utils: Utils) => void;
+    type Job = (date: Date, utils: Utils) => Promise<void>;
     type JPSpeaker = 'woman' | 'boy' | 'gentleman';
 }
