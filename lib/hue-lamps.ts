@@ -47,10 +47,10 @@ export const darkenLightsBy5 = async (bridge: Bridge) => {
 
 export const brightenLightsBy5 = async (bridge: Bridge) => {
     const currentState: SimpleLightState = await bridge.lights.getLightState(allLightIDs[0]);
-    const newBri = currentState.on ? Math.max(currentState.bri + 5, 100) : 5;
+    const newBri = currentState.on ? Math.min(currentState.bri + 5, 254) : 5;
     const color = simpleColors.white;
     const brighterState = new LightState().on(true).bri(newBri).ct(color.ct);
     for (const lightID of allLightIDs) {
         await bridge.lights.setLightState(lightID, brighterState);
     }
-}
+};
