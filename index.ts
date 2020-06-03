@@ -48,7 +48,7 @@ init().then(utils => {
     schedule.scheduleJob('30 */10 * * * *', async date => {
         await notifyCO2Concentration(date, utils);
     });
-    schedule.scheduleJob('40    0 * * * *', async date => {
+    schedule.scheduleJob('40   10 * * * *', async date => {
         await nhkRadioNewsJob(date, utils);
     });
     schedule.scheduleJob('* 0-6 * * *', async () => {
