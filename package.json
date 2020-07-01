@@ -36,7 +36,7 @@
     "moment-timezone": "^0.5.27",
     "node-hue-api": "^4.0.5",
     "node-schedule": "^1.3.2",
-    "typescript": "^3.7.5"
+    "typescript": "^3.9.6"
   },
   "directories": {
     "lib": "lib"
