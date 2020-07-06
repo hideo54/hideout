@@ -12,6 +12,6 @@ export default ((text: string) => {
         line += '。';
         return line;
     });
-    const phrase = '速報。' + lines.join('');
+    const phrase = '速報。' + lines.join('').repeat(2);
     return phrase;
 });
