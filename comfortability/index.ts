@@ -12,17 +12,11 @@ const generatePhrase = async (sensor: BME280) => {
 
     const now = new Date();
     if ([ 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
-        if (temperature < 25) {
+        if (temperature < 23) {
             advice += '部屋の温度を上げましょう。';
         }
         if (temperature > 28) {
             advice += '部屋の温度を下げましょう。';
-        }
-        if (humidity < 55) {
-            advice += '部屋の湿度を上げましょう。';
-        }
-        if (humidity > 65) {
-            advice += '部屋の湿度を下げましょう。';
         }
     }
     if ([ 10, 11, 12, 1, 2, 3, 4 ].includes(now.getMonth() + 1)) { // Winter
@@ -32,12 +26,11 @@ const generatePhrase = async (sensor: BME280) => {
         if (temperature > 22) {
             advice += '部屋の温度を下げましょう。';
         }
-        if (humidity < 45) {
-            advice += '部屋の湿度を上げましょう。';
-        }
-        if (humidity > 60) {
-            advice += '部屋の湿度を下げましょう。';
-        }
+    }
+    if (humidity < 40) {
+        advice += '部屋の湿度を上げましょう。';
+    } else if (humidity > 60) {
+        advice += '部屋の湿度を下げましょう。';
     }
     if (advice) {
         return report + advice;
