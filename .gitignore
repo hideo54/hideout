@@ -1,7 +1,6 @@
 *.js
 !jest.config.js
 node_modules/
-Voices/
 audio/
 key.json
 dns/records.json
