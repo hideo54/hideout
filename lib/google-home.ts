@@ -2,6 +2,8 @@
 // because there's no type definition of castv2-client.
 import * as http from 'http';
 import { AddressInfo } from 'net';
+import { promises as fs } from 'fs';
+import { Buffer } from 'buffer';
 import { Client as GoogleCastClient, DefaultMediaReceiver } from 'castv2-client';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -13,7 +15,7 @@ export class GoogleHome {
         this.IPAddress = ip;
     }
 
-    pushAudio(audio: Buffer) {
+    pushAudio(audio: Buffer, headChaim?: string) {
         const client = new GoogleCastClient();
         client.connect( this.IPAddress, () => {
             client.launch(DefaultMediaReceiver, (err, player) => {
@@ -21,8 +23,12 @@ export class GoogleHome {
                     console.error(err);
                     client.close();
                 }
-                const server = http.createServer((request, response) => {
+                const server = http.createServer(async (request, response) => {
                     response.setHeader('Content-Type', 'audio/mpeg');
+                    if (headChaim) {
+                        const headChaimBuffer = await fs.readFile(`${__dirname}/../audio/${headChaim}.mp3`);
+                        audio = Buffer.concat([ headChaimBuffer, audio ]);
+                    }
                     response.end(audio);
                 });
                 server.listen(0);
