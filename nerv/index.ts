@@ -20,6 +20,7 @@ const job = async (utils: Utils) => {
         hashtag: string,
         handler: (text: string) => string | null,
         speaker: JPSpeaker,
+        headerChaim?: string
     }[] = [
         {
             hashtag: '地震',
@@ -30,6 +31,7 @@ const job = async (utils: Utils) => {
             hashtag: 'nhkニュース速報',
             handler: breakingHandler,
             speaker: 'gentleman',
+            headerChaim: 'nhk-breaking-chaim',
         },
         {
             hashtag: '緊急', // 大抵緊急地震速報
@@ -37,7 +39,7 @@ const job = async (utils: Utils) => {
             speaker: 'gentleman',
         },
     ];
-    for (const {hashtag, handler, speaker} of watchers) {
+    for (const { hashtag, handler, speaker, headerChaim } of watchers) {
         const url = `https://unnerv.jp/api/v1/streaming/hashtag?tag=${encodeURI(hashtag)}`;
         new ReadMastodonTootsStream(url, async (event: any) => {
             const data = JSON.parse(event.data);
@@ -47,7 +49,7 @@ const job = async (utils: Utils) => {
             const phrase = handler(content);
             if (phrase) {
                 const voice = await utils.speaker.getJPVoice(phrase, speaker);
-                utils.gHome.pushAudio(voice);
+                utils.gHome.pushAudio(voice, headerChaim);
             }
         });
     }
