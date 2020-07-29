@@ -13,7 +13,7 @@ export default ((text: string) => {
     if (lines[0] === '《緊急地震速報（気象庁発表）》') {
         const [_, epicenter] = lines[1].match(/^(\S*)で地震　強い揺れに警戒$/) || [];
         const areas = lines[3].split('　');
-        const phrase = `${epicenter}で地震が発生しました。次の地域では強い揺れに警戒してください。${areas.join('、')}。`;
+        const phrase = `${epicenter}で地震。強い揺れに警戒してください。${areas.join('、')}では、強い揺れに警戒してください。`;
         return phrase;
     }
     // 緊急地震速報以外の緊急tootとして、北朝鮮ミサイルに伴うJアラートなどがある。

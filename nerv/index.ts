@@ -37,6 +37,7 @@ const job = async (utils: Utils) => {
             hashtag: '緊急', // 大抵緊急地震速報
             handler: eewHandler,
             speaker: 'gentleman',
+            headerChaim: 'eew-chaim',
         },
     ];
     for (const { hashtag, handler, speaker, headerChaim } of watchers) {
