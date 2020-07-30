@@ -27,4 +27,4 @@ jobs:
     - run: mkdir audio
     - run: npm run build --if-present
     - run: sudo timedatectl set-timezone Asia/Tokyo
-    - run: npm test
+    - run: npm test -- -t ${{ secrets.CODECOV_TOKEN }}
