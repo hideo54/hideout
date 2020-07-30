@@ -6,5 +6,6 @@ key.json
 dns/records.json
 .env
 dist/
+coverage/
 
 .DS_Store
