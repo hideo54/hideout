@@ -5,8 +5,6 @@ import { AddressInfo } from 'net';
 import { promises as fs } from 'fs';
 import { Buffer } from 'buffer';
 import { Client as GoogleCastClient, DefaultMediaReceiver } from 'castv2-client';
-import dotenv from 'dotenv';
-dotenv.config();
 
 export class GoogleHome {
     IPAddress: string;
