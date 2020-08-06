@@ -1,45 +1,32 @@
-import BME280 from 'bme280-sensor';
+export const generatePhrase = (temperature: number, humidity: number, month: number) => {
+    const t = temperature.toFixed(1);
+    const h = humidity.toFixed(1);
 
-const generatePhrase = async (sensor: BME280) => {
-    const data = await sensor.readSensorData();
+    const [ isTempTooLow, isTempTooHigh ] = [ 5, 6, 7, 8, 9 ].includes(month)
+        ? [ temperature < 23, temperature > 30] // Summer
+        : [ temperature < 16, temperature > 23]; // Winter
+    const isHumidityTooLow = humidity < 40;
+    const isHumidityTooHigh = humidity > 60;
 
-    const temperature = data.temperature_C;
-    const humidity = data.humidity;
-    // const pressure = data.pressure_hPa;
-
-    const report = `現在、気温${temperature.toFixed(1)}度、湿度${humidity.toFixed(1)}パーセントです。`;
-    let advice = '';
-
-    const now = new Date();
-    if ([ 5, 6, 7, 8, 9 ].includes(now.getMonth() + 1)) { // Summer
-        if (temperature < 23) {
-            advice += '部屋の温度を上げましょう。';
+    const tWarning = `部屋の温度を${isTempTooLow ? '上げ' : '下げ'}ましょう。`;
+    const hWarning = `部屋の湿度を${isHumidityTooLow ? '上げ' : '下げ'}ましょう。`;
+    if (isHumidityTooLow || isHumidityTooHigh) {
+        if (isTempTooLow || isTempTooHigh) {
+            return `現在、気温${t}度、湿度${h}パーセントです。`
+                + tWarning + hWarning;
         }
-        if (temperature > 28) {
-            advice += '部屋の温度を下げましょう。';
-        }
+        return `現在、湿度${h}パーセントです。${hWarning}`;
     }
-    if ([ 10, 11, 12, 1, 2, 3, 4 ].includes(now.getMonth() + 1)) { // Winter
-        if (temperature < 18) {
-            advice += '部屋の温度を上げましょう。';
-        }
-        if (temperature > 22) {
-            advice += '部屋の温度を下げましょう。';
-        }
-    }
-    if (humidity < 40) {
-        advice += '部屋の湿度を上げましょう。';
-    } else if (humidity > 60) {
-        advice += '部屋の湿度を下げましょう。';
-    }
-    if (advice) {
-        return report + advice;
+    if (isTempTooLow || isTempTooHigh) {
+        return `現在、気温${t}度です。${tWarning}`;
     }
     return;
 };
 
 const job: Job = async (date: Date, utils: Utils) => {
-    const phrase = await generatePhrase(utils.bme280);
+    const data = await utils.bme280.readSensorData();
+    const month = date.getMonth() + 1;
+    const phrase = generatePhrase(data.temperature_C, data.humidity, month);
     if (phrase) {
         const voice = await utils.speaker.getJPVoice(phrase, 'boy');
         utils.gHome.pushAudio(voice);
