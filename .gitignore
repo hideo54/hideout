@@ -1,8 +1,7 @@
-*.js
-!jest.config.js
 node_modules/
 audio/
 key.json
+sftpConfig.json
 dns/records.json
 .env
 dist/

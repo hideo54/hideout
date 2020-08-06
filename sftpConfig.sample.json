@@ -1,0 +1,10 @@
+{
+    "host": "Chika.local",
+    "port": 12345,
+    "username": "hideo54",
+    "privateKey": "/Users/hideo54/.ssh/key.pem",
+    "passphrase": "passphrase",
+    "agent": "/path/to/agent.sock",
+    "localDir": "dist",
+    "remoteDir": "/home/hideo54/Products/hideout"
+}
