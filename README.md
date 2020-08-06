@@ -1,5 +1,8 @@
 # hideout
 
+![Main CI](https://github.com/hideo54/hideout/workflows/Main%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/hideo54/hideout/branch/master/graph/badge.svg)](https://codecov.io/gh/hideo54/hideout)
+
 hidoe54's original smarthome system.
 
 This system is well open-sourced, but special hardware setup is required; highly customized for my hardware and hideout Network.
