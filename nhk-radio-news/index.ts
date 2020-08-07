@@ -1,7 +1,7 @@
 import axios from 'axios';
 import moment from 'moment-timezone';
 
-const fetchLatestNews = async ()  => {
+export const fetchLatestNews = async () => {
     const apiUrl = 'https://api.nhk.or.jp/r-news/v1/newslist.js';
     const data = await axios.get(apiUrl).then(response => {
         return JSON.parse(response.data // `radionews(…);`
