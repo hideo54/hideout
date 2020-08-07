@@ -12,7 +12,7 @@ declare module 'bme280-sensor' {
     export default class {
         constructor(options?: Options);
         init(): Promise<number>;
-        resett(): Promise<void>;
+        reset(): Promise<void>;
         readSensorData(): Promise<Data>;
         loadCalibration(callback: () => void): void;
         static BME280_DEFAULT_I2C_ADDRESS(): number;
