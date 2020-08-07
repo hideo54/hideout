@@ -8,6 +8,8 @@ declare module 'bme280-sensor' {
         temperature_C: number;
         humidity: number;
         pressure_hPa: number;
+        temperature_F: number;
+        pressure_inHg: number;
     };
     export default class {
         constructor(options?: Options);
