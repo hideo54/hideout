@@ -1,10 +1,10 @@
 declare module 'bme280-sensor' {
-    type Options = {
+    export type Options = {
         i2cBusNo?: number;
         i2cAddress?: number;
         outputsInfo?: boolean;
     };
-    type Data = {
+    export type Data = {
         temperature_C: number;
         humidity: number;
         pressure_hPa: number;
