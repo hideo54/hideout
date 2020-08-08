@@ -1,9 +1,8 @@
-// @ts-nocheck
-// because there's no type definition of castv2-client.
-import * as http from 'http';
+import http from 'http';
 import { AddressInfo } from 'net';
 import { promises as fs } from 'fs';
 import { Buffer } from 'buffer';
+// @ts-ignore
 import { Client as GoogleCastClient, DefaultMediaReceiver } from 'castv2-client';
 
 export class GoogleHome {
@@ -16,6 +15,7 @@ export class GoogleHome {
     pushAudio(audio: Buffer, headChaim?: string) {
         const client = new GoogleCastClient();
         client.connect( this.IPAddress, () => {
+            // @ts-ignore
             client.launch(DefaultMediaReceiver, (err, player) => {
                 if (err) {
                     console.error(err);
@@ -36,7 +36,7 @@ export class GoogleHome {
                     contentType: 'audio/mp3',
                     streamType: 'BUFFERED'
                 };
-                player.load(media, { autoplay: true }, (err, status) => {
+                player.load(media, { autoplay: true }, () => {
                     server.close();
                     client.close();
                 });
@@ -47,6 +47,7 @@ export class GoogleHome {
     pushAudioUrl(url: string) {
         const client = new GoogleCastClient();
         client.connect( this.IPAddress, () => {
+            // @ts-ignore
             client.launch(DefaultMediaReceiver, (err, player) => {
                 if (err) {
                     console.error(err);
@@ -57,7 +58,7 @@ export class GoogleHome {
                     contentType: 'audio/mp3',
                     streamType: 'BUFFERED'
                 };
-                player.load(media, { autoplay: true }, (err, status) => {
+                player.load(media, { autoplay: true }, () => {
                     client.close();
                 });
             });
