@@ -29,6 +29,6 @@ export default class Speech {
             },
         };
         const [ response ] = await this.client.synthesizeSpeech(request);
-        return response.audioContent;
+        return response.audioContent as Buffer;
     }
 }
