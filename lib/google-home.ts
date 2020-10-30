@@ -34,7 +34,7 @@ export class GoogleHome {
                 const media = {
                     contentId: `http://${process.env.SERVER_ADDRESS}:${address.port}`,
                     contentType: 'audio/mp3',
-                    streamType: 'BUFFERED'
+                    streamType: 'BUFFERED',
                 };
                 player.load(media, { autoplay: true }, () => {
                     server.close();
@@ -56,7 +56,7 @@ export class GoogleHome {
                 const media = {
                     contentId: url,
                     contentType: 'audio/mp3',
-                    streamType: 'BUFFERED'
+                    streamType: 'BUFFERED',
                 };
                 player.load(media, { autoplay: true }, () => {
                     client.close();
