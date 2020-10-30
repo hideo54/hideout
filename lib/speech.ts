@@ -23,7 +23,7 @@ export default class Speech {
                 name: jpSpeakerName[speaker],
             },
             audioConfig: {
-                audioEncoding: 'MP3',
+                audioEncoding: 'MP3' as const,
                 speakingRate: rate,
                 volumeGainDb: 0.0,
             },
