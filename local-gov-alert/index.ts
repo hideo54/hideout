@@ -27,7 +27,7 @@ const job: Job = async (date: Date, utils: Utils) => {
     const latest = await getLatest();
     const phrase = await getPhrase(url + latest.link);
     if (Number(date) - 2 * 60 * 1000 < Number(latest.date)) { // Within 2 minutes
-        const voice = await utils.speaker.getJPVoice(phrase, 'gentleman');
+        const voice = await utils.speaker.getJPVoice(phrase, { speaker: 'gentleman' });
         utils.gHome.pushAudio(voice);
     }
 };

@@ -19,7 +19,7 @@ export const generatePhrase = (date: Date) => {
 
 const job: Job = async (date: Date, utils: Utils) => {
     const phrase = generatePhrase(date);
-    const voice = await utils.speaker.getJPVoice(phrase);
+    const voice = await utils.speaker.getJPVoice(phrase, { makeCache: true });
     utils.gHome.pushAudio(voice);
 };
 

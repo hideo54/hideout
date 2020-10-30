@@ -28,7 +28,7 @@ const job: Job = async (date: Date, utils: Utils) => {
     const month = date.getMonth() + 1;
     const phrase = generatePhrase(data.temperature_C, data.humidity, month);
     if (phrase) {
-        const voice = await utils.speaker.getJPVoice(phrase, 'boy');
+        const voice = await utils.speaker.getJPVoice(phrase, { speaker: 'boy' });
         utils.gHome.pushAudio(voice);
     }
 };

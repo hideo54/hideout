@@ -49,7 +49,7 @@ const job = async (utils: Utils) => {
             });
             const phrase = handler(content);
             if (phrase) {
-                const voice = await utils.speaker.getJPVoice(phrase, speaker);
+                const voice = await utils.speaker.getJPVoice(phrase, { speaker });
                 utils.gHome.pushAudio(voice, headerChaim);
             }
         });
