@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@google-cloud/text-to-speech": "^3.1.1",
-    "@slack/web-api": "^5.8.0",
+    "@slack/web-api": "^5.13.0",
     "bme280-sensor": "github:hideo54/bme280-sensor",
     "castv2-client": "^1.2.0",
     "cheerio": "^1.0.0-rc.3",
