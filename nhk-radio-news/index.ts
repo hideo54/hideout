@@ -1,5 +1,6 @@
 import axios from 'axios';
 import moment from 'moment-timezone';
+import { playAudioUrl } from '../lib/play';
 
 export const fetchLatestNews = async () => {
     const apiUrl = 'https://api.nhk.or.jp/r-news/v1/newslist.js';
@@ -37,7 +38,7 @@ export const fetchLatestNews = async () => {
 const job: Job = async (date: Date, utils: Utils) => {
     const news = await fetchLatestNews();
     if (news.date.hour() === moment(date).hour()) {
-        utils.gHome.pushAudioUrl(news.url);
+        playAudioUrl(news.url);
     }
 };
 

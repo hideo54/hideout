@@ -1,4 +1,5 @@
 import moment from 'moment-timezone';
+import { playAudioBuffer } from '../lib/play';
 
 export const generatePhrase = (date: Date) => {
     const fireDate = moment(date).tz('Asia/Tokyo');
@@ -20,7 +21,7 @@ export const generatePhrase = (date: Date) => {
 const job: Job = async (date: Date, utils: Utils) => {
     const phrase = generatePhrase(date);
     const voice = await utils.speaker.getJPVoice(phrase, { makeCache: true });
-    utils.gHome.pushAudio(voice);
+    playAudioBuffer(voice);
 };
 
 export default job;

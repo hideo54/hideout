@@ -3,6 +3,7 @@ import htmlToText from 'html-to-text';
 import earthquakeHandler from './earthquake';
 import breakingHandler from './breaking';
 import emergencyHandler from './emergency';
+import { playAudioBuffer } from '../lib/play';
 
 class ReadMastodonTootsStream {
     streamUrl: string;
@@ -50,7 +51,7 @@ const job = async (utils: Utils) => {
             const phrase = handler(content);
             if (phrase) {
                 const voice = await utils.speaker.getJPVoice(phrase, { speaker });
-                utils.gHome.pushAudio(voice, headerChaim);
+                playAudioBuffer(voice, headerChaim);
             }
         });
     }

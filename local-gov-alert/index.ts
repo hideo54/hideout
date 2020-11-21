@@ -1,6 +1,7 @@
 import axios from 'axios';
 import iconv from 'iconv-lite';
 import cheerio from 'cheerio';
+import { playAudioBuffer } from '../lib/play';
 
 const url = 'http://www.bousai-mail.jp/suginami/musen/';
 
@@ -28,7 +29,7 @@ const job: Job = async (date: Date, utils: Utils) => {
     const phrase = await getPhrase(url + latest.link);
     if (Number(date) - 2 * 60 * 1000 < Number(latest.date)) { // Within 2 minutes
         const voice = await utils.speaker.getJPVoice(phrase, { speaker: 'gentleman' });
-        utils.gHome.pushAudio(voice);
+        playAudioBuffer(voice);
     }
 };
 
