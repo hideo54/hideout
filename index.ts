@@ -7,8 +7,8 @@ import { GoogleHome } from './lib/google-home';
 import { WebClient as SlackWebClient } from '@slack/web-api';
 import BME280 from 'bme280-sensor';
 import MHZ19 from 'mh-z19b';
-import { v3 as hueAPIv3 } from 'node-hue-api';
-const hueAPI = hueAPIv3.api;
+// import { v3 as hueAPIv3 } from 'node-hue-api';
+// const hueAPI = hueAPIv3.api;
 
 const init = async () => {
     const speaker = new Speech();
@@ -21,11 +21,12 @@ const init = async () => {
     });
     await bme280.init();
     const mhz19 = new MHZ19();
-    const hueAddress = process.env.HUE_BRIDGE_ADDRESS!;
-    const hueUsername = process.env.HUE_BRIDGE_USERNAME!;
-    const hueBridge = await hueAPI.createLocal(hueAddress).connect(hueUsername);
+    // const hueAddress = process.env.HUE_BRIDGE_ADDRESS!;
+    // const hueUsername = process.env.HUE_BRIDGE_USERNAME!;
+    // const hueBridge = await hueAPI.createLocal(hueAddress).connect(hueUsername);
     const utils = {
-        speaker, gHome, slackWebClient, bme280, mhz19, hueBridge,
+        speaker, gHome, slackWebClient, bme280, mhz19,
+        // hueBridge,
     } as Utils;
     return utils;
 };
@@ -35,7 +36,7 @@ import clockJob from './clock';
 import comfortabilityJob from './comfortability';
 import notifyCO2Concentration from './co2';
 import nhkRadioNewsJob from './nhk-radio-news';
-import { darkenLightsBy5, brightenLightsBy5 } from './lib/hue-lamps';
+// import { darkenLightsBy5, brightenLightsBy5 } from './lib/hue-lamps';
 
 init().then(utils => {
     nerv(utils);
@@ -51,10 +52,10 @@ init().then(utils => {
     schedule.scheduleJob('40   10 * * * *', async date => {
         await nhkRadioNewsJob(date, utils);
     });
-    schedule.scheduleJob('* 0-6 * * *', async () => {
-        await darkenLightsBy5(utils.hueBridge);
-    });
-    schedule.scheduleJob('* 9-12 * * *', async () => {
-        await brightenLightsBy5(utils.hueBridge);
-    });
+    // schedule.scheduleJob('* 0-6 * * *', async () => {
+    //     await darkenLightsBy5(utils.hueBridge);
+    // });
+    // schedule.scheduleJob('* 9-12 * * *', async () => {
+    //     await brightenLightsBy5(utils.hueBridge);
+    // });
 });
