@@ -27,7 +27,7 @@
     "jest": "^26.6.3",
     "sftp-sync-deploy": "^0.7.1",
     "ts-jest": "^26.4.4",
-    "ts-node": "^9.0.0"
+    "ts-node": "^9.1.0"
   },
   "dependencies": {
     "@google-cloud/text-to-speech": "^3.1.3",
