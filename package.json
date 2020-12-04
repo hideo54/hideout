@@ -17,7 +17,7 @@
     "@types/common-tags": "^1.8.0",
     "@types/download": "^6.2.4",
     "@types/eventsource": "^1.1.5",
-    "@types/html-to-text": "^5.1.2",
+    "@types/html-to-text": "^6.0.0",
     "@types/jest": "^26.0.16",
     "@types/moment-timezone": "^0.5.13",
     "@types/node": "^14.14.10",
