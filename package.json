@@ -13,7 +13,7 @@
   "author": "hideo54",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@types/cheerio": "^0.22.27",
+    "@types/cheerio": "^0.22.28",
     "@types/common-tags": "^1.8.0",
     "@types/download": "^6.2.4",
     "@types/eventsource": "^1.1.5",
