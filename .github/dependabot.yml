@@ -1,10 +1,4 @@
 version: 2
-registries:
-  npm-registry-npm-pkg-github-com-hideo54:
-    type: npm-registry
-    url: https://npm.pkg.github.com/hideo54
-    username: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_HIDEO54_USERNAME}}"
-    password: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_HIDEO54_PASSWORD}}"
 
 updates:
 - package-ecosystem: npm
@@ -15,19 +9,3 @@ updates:
   open-pull-requests-limit: 10
   assignees:
   - hideo54
-  ignore:
-  - dependency-name: "@types/node"
-    versions:
-    - 14.14.23
-    - 14.14.29
-    - 14.14.30
-    - 14.14.33
-    - 15.0.1
-  - dependency-name: html-to-text
-    versions:
-    - 7.1.0
-  - dependency-name: moment-timezone
-    versions:
-    - 0.5.32
-  registries:
-  - npm-registry-npm-pkg-github-com-hideo54
