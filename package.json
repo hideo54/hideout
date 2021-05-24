@@ -37,7 +37,7 @@
     "cheerio": "^1.0.0-rc.9",
     "common-tags": "^1.8.0",
     "dnsjack": "^1.0.0",
-    "dotenv": "^9.0.2",
+    "dotenv": "^10.0.0",
     "download": "^8.0.0",
     "eventsource": "^1.1.0",
     "html-to-text": "^7.1.1",
