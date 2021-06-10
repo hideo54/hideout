@@ -40,7 +40,7 @@
     "dotenv": "^10.0.0",
     "download": "^8.0.0",
     "eventsource": "^1.1.0",
-    "html-to-text": "^7.1.1",
+    "html-to-text": "^8.0.0",
     "iconv-lite": "^0.6.3",
     "mh-z19b": "^1.0.1",
     "moment-timezone": "^0.5.27",
