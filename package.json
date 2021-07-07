@@ -14,7 +14,7 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/cheerio": "^0.22.29",
-    "@types/common-tags": "^1.8.0",
+    "@types/common-tags": "^1.8.1",
     "@types/download": "^8.0.0",
     "@types/eventsource": "^1.1.5",
     "@types/html-to-text": "^8.0.0",
