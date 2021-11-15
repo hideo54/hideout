@@ -7,6 +7,12 @@ hidoe54's original smarthome system.
 
 This system is well open-sourced, but special hardware setup is required; highly customized for my hardware and hideout Network.
 
+**WORK IN PROGRESS for migration from Google Home to HomePod**
+
+---
+
+Belows are Outdated README:
+
 ## Features
 
 以下を自動音声で通知します:

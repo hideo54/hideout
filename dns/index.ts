@@ -1,17 +1,12 @@
+import os from 'os';
 import dnsjack from 'dnsjack';
-import records from './records.json';
 
-const jack = dnsjack.createServer();
-
-interface Record {
-    name: string;
-    address: string;
-}
-
-for (const record of records as Record[]) {
-    jack.route(record.name, (data, callback) => {
-        callback(null, record.address);
-    });
-}
-
-jack.listen();
+export const init = () => {
+    const interfaces = os.networkInterfaces();
+    const myPrivateIp = Object.values(interfaces).map(nets =>
+        nets?.filter(net => net.address.startsWith('192.168.'))
+    ).flat()[0]!.address;
+    const jack = dnsjack.createServer();
+    jack.route('*.hideout', myPrivateIp);
+    jack.listen();
+};

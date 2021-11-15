@@ -1,7 +1,7 @@
 {
   "name": "hideout",
-  "version": "1.0.0",
-  "description": "Original smarthome system.",
+  "version": "2.0.0",
+  "description": "hideo54's smarthome system.",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p tsconfig.json && cp -R *.json dist/. && cp -R audio/ dist/audio/",
