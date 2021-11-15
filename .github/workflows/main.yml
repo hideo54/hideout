@@ -2,9 +2,9 @@ name: Main CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -12,8 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        node-version: [12.x, 14.x]
+      node-version: 16
 
     steps:
     - uses: actions/checkout@v2
@@ -22,7 +21,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: cp dns/records.sample.json dns/records.json
     - run: touch key.json
     - run: npm run build --if-present
     - run: sudo timedatectl set-timezone Asia/Tokyo
