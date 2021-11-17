@@ -9,6 +9,10 @@ This system is well open-sourced, but special hardware setup is required; highly
 
 **WORK IN PROGRESS for migration from Google Home to HomePod**
 
+## DNS
+
+Firefox: Open `about:config` and set `browser.fixup.domainsuffixwhitelist.hideout` as true
+
 ---
 
 Belows are Outdated README:
