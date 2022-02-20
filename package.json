@@ -21,5 +21,10 @@
   "devDependencies": {
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "bme280-sensor": "^0.1.7",
+    "dnsjack": "^1.0.0",
+    "mh-z19b": "^1.0.1"
   }
 }
