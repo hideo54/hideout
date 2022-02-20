@@ -8,5 +8,5 @@ export const init = () => {
     ).flat()[0]!.address;
     const jack = dnsjack.createServer();
     jack.route('*.hideout', myPrivateIp);
-    jack.listen();
+    jack.listen(54053);
 };
