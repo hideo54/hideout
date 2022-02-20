@@ -1,3 +1,4 @@
+import os from 'os';
 import BME280 from 'bme280-sensor';
 import MHZ19 from 'mh-z19b';
 
@@ -26,7 +27,7 @@ class Sensors {
 }
 
 const init = async () => {
-    if (process.env.NODE_ENV === 'production') {
+    if (os.hostname() === 'Chika') {
         const sensors = new Sensors();
         sensors.init();
         const tmp = await sensors.bme280?.readSensorData();
