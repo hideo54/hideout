@@ -26,6 +26,8 @@
   "dependencies": {
     "bme280-sensor": "^0.1.7",
     "dnsjack": "^1.0.0",
+    "fastify": "^3.27.2",
+    "fastify-vhost": "^1.3.1",
     "mh-z19b": "^1.0.1"
   }
 }

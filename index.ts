@@ -1,7 +1,9 @@
 import os from 'os';
+import fastify from 'fastify';
 import BME280 from 'bme280-sensor';
 import MHZ19 from 'mh-z19b';
 
+import * as httpProxy from './src/http-proxy';
 import * as dns from './src/dns';
 
 class Sensors {
@@ -35,6 +37,10 @@ const init = async () => {
         const tmp = await sensors.bme280?.readSensorData();
         console.log(tmp);
     }
+
+    const server = fastify();
+    await httpProxy.init(server);
+    server.listen(80);
 
     dns.init();
 };
