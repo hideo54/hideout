@@ -1,13 +1,5 @@
 node_modules/
-audio/*
-!audio/cache/
-audio/cache/*
-key.json
-sftpConfig.json
-dns/records.json
-.env
 dist/
-coverage/
 
 .DS_Store
 

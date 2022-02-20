@@ -1,58 +1,23 @@
 {
   "name": "hideout",
   "version": "2.0.0",
-  "description": "hideo54's smarthome system.",
-  "main": "index.js",
+  "description": "Original Smarthome System for hideo54.",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json && cp -R *.json dist/. && cp -R audio/ dist/audio/",
-    "develop": "TS_NODE_FILES=true ts-node index.ts -P tsconfig.json",
-    "deploy": "node deploy.js",
-    "production": "NODE_ENV=production npm install",
-    "test": "jest && codecov"
-  },
-  "author": "hideo54",
-  "license": "Apache-2.0",
-  "devDependencies": {
-    "@types/cheerio": "^0.22.30",
-    "@types/common-tags": "^1.8.1",
-    "@types/download": "^8.0.1",
-    "@types/eventsource": "^1.1.6",
-    "@types/html-to-text": "^8.0.1",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^16.4.13",
-    "@types/node-schedule": "^1.3.2",
-    "@types/uuid": "^8.3.1",
-    "codecov": "^3.8.3",
-    "jest": "^26.6.3",
-    "sftp-sync-deploy": "^0.7.1",
-    "ts-jest": "^26.5.6",
-    "ts-node": "^10.2.0"
-  },
-  "dependencies": {
-    "@google-cloud/text-to-speech": "^3.1.3",
-    "bme280-sensor": "github:hideo54/bme280-sensor",
-    "cheerio": "^1.0.0-rc.10",
-    "common-tags": "^1.8.0",
-    "dnsjack": "^1.0.0",
-    "dotenv": "^10.0.0",
-    "download": "^8.0.0",
-    "eventsource": "^1.1.0",
-    "html-to-text": "^8.0.0",
-    "iconv-lite": "^0.6.3",
-    "mh-z19b": "^1.0.1",
-    "node-schedule": "^2.0.0",
-    "typescript": "^4.3.5",
-    "uuid": "^8.3.2"
-  },
-  "directories": {
-    "lib": "lib"
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hideo54/hideout.git"
   },
+  "author": "hideo54",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/hideo54/hideout/issues"
   },
-  "homepage": "https://github.com/hideo54/hideout#readme"
+  "homepage": "https://github.com/hideo54/hideout#readme",
+  "dependencies": {
+    "typescript": "^4.5.5"
+  }
 }
