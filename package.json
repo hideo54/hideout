@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "develop": "TS_NODE_FILES=true ts-node index.ts -P tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,8 @@
     "url": "https://github.com/hideo54/hideout/issues"
   },
   "homepage": "https://github.com/hideo54/hideout#readme",
-  "dependencies": {
+  "devDependencies": {
+    "ts-node": "^10.5.0",
     "typescript": "^4.5.5"
   }
 }
