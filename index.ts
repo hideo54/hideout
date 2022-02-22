@@ -36,7 +36,7 @@ class Sensors {
 const init = async () => {
     if (os.hostname() === 'Chika') {
         const sensors = new Sensors();
-        sensors.init();
+        await sensors.init();
         const tmp = await sensors.bme280?.readSensorData();
         console.log(tmp);
     }
