@@ -19,7 +19,6 @@ class Sensors {
             i2cAddress: 0x76,
             outputsInfo: false,
         });
-        this.mhz19 = new MHZ19();
     }
 
     async init() {
@@ -29,6 +28,12 @@ class Sensors {
         } catch (e) {
             console.error(e);
             this.bme280 = null;
+        }
+        try {
+            this.mhz19 = new MHZ19();
+        } catch (e) {
+            console.error(e);
+            this.mhz19 = null;
         }
     }
 }
