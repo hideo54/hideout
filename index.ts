@@ -24,9 +24,12 @@ class Sensors {
 
     async init() {
         if (this.disabled) return;
-        await this.bme280?.init().catch(() => {
-            console.error('Failed to initialize BME280 sensor. Check the connection.');
-        });
+        try {
+            await this.bme280?.init();
+        } catch (e) {
+            console.error(e);
+            this.bme280 = null;
+        }
     }
 }
 
