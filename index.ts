@@ -42,13 +42,11 @@ const init = async () => {
     if (os.hostname() === 'Chika') {
         const sensors = new Sensors();
         await sensors.init();
-        const tmp = await sensors.bme280?.readSensorData();
-        console.log(tmp);
     }
 
     const server = fastify();
     await httpProxy.init(server);
-    server.listen(80);
+    server.listen(80, '0.0.0.0');
 
     dns.init();
 };
