@@ -13,7 +13,6 @@ Original Smarthome System for hideo54.
 - [ ] Original Prometheus exporter
 - [ ] Audio broadcast API through speaker
 - [ ] Breaking News
-- [ ]
 - [ ] API (migration with auth)
 - [ ] Welcome page (migration from hideout-web)
 
