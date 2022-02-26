@@ -4,9 +4,8 @@
   "description": "Original Smarthome System for hideo54.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/http-proxy/table.json dist/src/http-proxy/",
     "develop": "TS_NODE_FILES=true ts-node index.ts -P tsconfig.json",
-    "pm2": "tsc && sudo pm2 start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
